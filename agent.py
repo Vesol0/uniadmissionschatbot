@@ -1,5 +1,6 @@
 import os
 
+from dotenv import load_dotenv
 from langchain.agents.middleware import dynamic_prompt, ModelRequest, HumanInTheLoopMiddleware, SummarizationMiddleware
 from langchain_community.embeddings import GPT4AllEmbeddings
 from langchain_core.output_parsers import StrOutputParser
@@ -8,12 +9,16 @@ from langchain_openai import ChatOpenAI
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 
-os.environ["OPENAI_API_KEY"] = "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"
+load_dotenv()
+google_key = os.getenv("GOOGLE_API_KEY")
+debug_mode = os.getenv("DEBUG", "False")
+
+
 os.environ["GOOGLE_API_KEY"] = "AIzaSyAAN2K5kcZrG8A7o1-4o8GfpE1xF8Z2Z4g"
 
 
 
-model = ChatGoogleGenerativeAI(model="gemini-3-flash-preview")
+model = ChatGoogleGenerativeAI(model="gemini-3-flash-preview", api_key=google_key)
 
 
 embeddings = GPT4AllEmbeddings(model="./models/ggml-all-MiniLM-L6-v2-f16.bin", n_ctx=512, n_threads=8)
