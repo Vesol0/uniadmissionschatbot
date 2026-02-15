@@ -14,8 +14,6 @@ google_key = os.getenv("GOOGLE_API_KEY")
 debug_mode = os.getenv("DEBUG", "False")
 
 
-os.environ["GOOGLE_API_KEY"] = "AIzaSyAAN2K5kcZrG8A7o1-4o8GfpE1xF8Z2Z4g"
-
 
 
 model = ChatGoogleGenerativeAI(model="gemini-3-flash-preview", api_key=google_key)
@@ -63,7 +61,6 @@ import getpass
 
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
-os.environ["PINECONE_API_KEY"] = "pcsk_77iHq3_CZQc9Evk9oUGKFZacc4N9shmJs1ME684RboeUumshDNPo1UxGu1eKLJm1oxFZ2C"
 
 
 #links = URLRetriever().getLinks("https://www.gcu.ac.uk/sitemap.xml")
