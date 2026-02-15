@@ -1,0 +1,10 @@
+python-dotenv~=1.2.1
+langchain~=1.2.7
+langchain-community~=0.4.1
+langchain-core~=1.2.7
+langchain-openai~=1.1.7
+langchain-google-genai~=4.2.0
+cloudscraper~=1.2.71
+bs4~=0.0.2
+beautifulsoup4~=4.14.3
+streamlit~=1.54.0
