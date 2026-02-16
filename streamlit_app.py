@@ -1,9 +1,16 @@
 import time
 from agent import get_ai_response
 import streamlit as st
+from save_to_csv import save_to_csv
 
 st.title("Admissions Chatbot")
-
+st.download_button(
+    label="Download History",
+    data=save_to_csv(st.session_state.history),
+    file_name="history.csv",
+    mime="text/csv",
+    icon=":material/download:"
+)
 def chat_stream(prompt):
     response = f'You said, "{prompt}" ...interesting.'
     for char in response:
