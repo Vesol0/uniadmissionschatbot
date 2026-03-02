@@ -1,9 +1,21 @@
+import os
+
+from dotenv import load_dotenv
+from langchain_chroma import Chroma
 from langchain_core.vectorstores import InMemoryVectorStore
 import streamlit as st
+load_dotenv()
 
-def process_docs(embeddings, docs) -> InMemoryVectorStore:
+def process_docs(embeddings, docs):
     with st.spinner('Loading Embeddings...'):
         vector_store = InMemoryVectorStore(embeddings)
+        # vector_store = Chroma(
+        #     collection_name="uni_documents",
+        #     embedding_function=embeddings,
+        #     persist_directory="./chroma_langchain.db",
+        #     chroma_cloud_api_key=os.getenv("CHROMA_CLOUD_API_KEY"),
+        #
+        # )
         from langchain_text_splitters import RecursiveCharacterTextSplitter
 
         text_splitter = RecursiveCharacterTextSplitter(

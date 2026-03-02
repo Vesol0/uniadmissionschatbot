@@ -4,13 +4,7 @@ import streamlit as st
 from save_to_csv import save_to_csv
 
 st.title("Admissions Chatbot")
-st.download_button(
-    label="Download History",
-    data=save_to_csv(st.session_state.history),
-    file_name="history.csv",
-    mime="text/csv",
-    icon=":material/download:"
-)
+
 def chat_stream(prompt):
     response = f'You said, "{prompt}" ...interesting.'
     for char in response:
@@ -18,6 +12,14 @@ def chat_stream(prompt):
         time.sleep(.02)
 if "history" not in st.session_state:
     st.session_state.history = []
+
+st.download_button(
+    label="Download History",
+    data=save_to_csv(st.session_state.history),
+    file_name="history.csv",
+    mime="text/csv",
+    icon=":material/download:"
+)
 
 for i, message in enumerate(st.session_state.history):
     with st.chat_message(message["role"]):
