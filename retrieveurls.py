@@ -24,8 +24,6 @@ for link in links:
     for data in soup(['style', 'script']):
         data.decompose()
 
-        print(' '.join(soup.stripped_strings))
-
 
 
     # print(soup.find('title').text.split(' |')[0])
