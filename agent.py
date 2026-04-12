@@ -24,10 +24,10 @@ load_dotenv()
 google_key = os.getenv("GOOGLE_API_KEY")
 debug_mode = os.getenv("DEBUG", "False")
 
-model = ChatGoogleGenerativeAI(model="gemini-3-flash-preview", api_key=google_key)
+model = ChatGoogleGenerativeAI(model="gemini-3.1-flash-lite-preview", api_key=google_key)
 
 #embeddings = GPT4AllEmbeddings(model="./models/ggml-all-MiniLM-L6-v2-f16.bin", n_ctx=512, n_threads=8)
-embeddings = HuggingFaceEmbeddings(model_name="BAAI/bge-small-en-v1.5")
+embeddings = HuggingFaceEmbeddings(model_name="jinaai/jina-embeddings-v4")
 
 
 
