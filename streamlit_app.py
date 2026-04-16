@@ -21,7 +21,7 @@ st.download_button(
     icon=":material/download:"
 )
 
-for i, message in enumerate(st.session_state.history):
+for i, message in enumerate(st.session_state.history): # chatbot conversation history
     with st.chat_message(message["role"]):
         st.write(message["content"])
 

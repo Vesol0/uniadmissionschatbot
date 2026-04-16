@@ -9,3 +9,4 @@ langchain~=1.2.7
 streamlit~=1.54.0
 pandas~=2.3.3
 lxml
+ragas
