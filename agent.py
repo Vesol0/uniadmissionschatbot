@@ -10,6 +10,8 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.documents import Document
 from langchain_community.retrievers import BM25Retriever
+from flashrank import Ranker
+
 
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_classic.retrievers import ContextualCompressionRetriever, EnsembleRetriever
@@ -26,7 +28,7 @@ load_dotenv()
 google_key = os.getenv("GOOGLE_API_KEY")
 debug_mode = os.getenv("DEBUG", "False")
 
-model = ChatGoogleGenerativeAI(model="gemini-2.5-flash", api_key=google_key) # define model (gemini-3.1-flash-lite-preview)
+model = ChatGoogleGenerativeAI(model="gemini-3.1-flash-lite-preview", api_key=google_key) # define model (gemini-3.1-flash-lite-preview)
 embeddings = HuggingFaceEmbeddings(model_name="BAAI/bge-large-en") # set embedding model
 
 """
@@ -76,11 +78,13 @@ hybrid_retriever = EnsembleRetriever( # hybrid retriever configuration
     retrievers=[semantic_retriever, lexical_retriever],
     weights=[0.6, 0.4]
 )
+from flashrank import Ranker
 
+Ranker(model_name="ms-marco-MultiBERT-L-12")
 compressor = FlashrankRerank() #reranker
 
 retriever = ContextualCompressionRetriever( # reranks the retrieval results from hybrid retriever
-     base_compressor=compressor,
+    base_compressor=compressor,
     base_retriever=hybrid_retriever
 )
 
